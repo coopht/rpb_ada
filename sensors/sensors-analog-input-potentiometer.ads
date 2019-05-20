@@ -1,10 +1,16 @@
 
+------------------------------------------------------------------------------
+--  Tested with:
+--  WAVESHARE Raspberry Pi High-Precision AD/DA Expansion Board SKU:11010,  --
+--  biultin potentiometer                                                   --
+------------------------------------------------------------------------------
+
 package Sensors.Analog.Input.Potentiometer is
 
    type Potentiometer is new Input_Analog_Sensor with private;
 
    function Create
-     (Board : Shield.Analog.Analog_Shield_Access;
+     (Board : Shield.Analog.Analog_Shield'Class;
       Pin   : Shield.Analog.Input_Pin_Number)
       return Potentiometer;
 

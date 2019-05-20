@@ -1,4 +1,8 @@
 
+----------------------------------------------------------------------
+--  Base package for all sensors which can be attached to Raspberry --
+----------------------------------------------------------------------
+
 with Ada.Finalization;
 
 package Sensors is
@@ -8,13 +12,15 @@ package Sensors is
 private
 
    type Sensor_Node is tagged record
-      Counter : Natural := 0;
+      Counter : Natural := 1;
    end record;
    type Sensor_Node_Access is access all Sensor_Node'Class;
 
    type Sensor is new Ada.Finalization.Controlled with record
       Node : Sensor_Node_Access;
    end record;
+
+   procedure Free (Self : in out Sensor) is null;
 
    overriding procedure Adjust   (Self : in out Sensor);
    overriding procedure Finalize (Self : in out Sensor);

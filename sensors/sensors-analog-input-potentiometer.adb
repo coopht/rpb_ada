@@ -6,13 +6,16 @@ package body Sensors.Analog.Input.Potentiometer is
    ------------
 
    function Create
-     (Board : Shield.Analog.Analog_Shield_Access;
+     (Board : Shield.Analog.Analog_Shield'Class;
       Pin   : Shield.Analog.Input_Pin_Number)
       return Potentiometer is
    begin
       return Result : Potentiometer do
          Result.Node := new Potentiometer_Node'
-           (Pin => Pin, Board => Board, others => <>);
+           (Counter => 1,
+            Pin     => Pin,
+            Board   => new Shield.Analog.Analog_Shield'Class' (Board),
+            others => <>);
       end return;
    end Create;
 

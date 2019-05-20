@@ -26,6 +26,7 @@ package body Sensors is
       if Self.Node /= null then
          Self.Node.Counter := Self.Node.Counter - 1;
          if Self.Node.Counter = 0 then
+            Free (Self);
             Free (Self.Node);
          end if;
       end if;
